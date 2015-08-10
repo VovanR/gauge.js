@@ -11,20 +11,23 @@
   "undef": true,
   "browser": true,
   "globals": {
-    "jQuery": true,
     "$": true,
-    "define": true,
-    "console": true,
+    "_": true,
+    "afterEach": true,
     "alert": true,
+    "beforeEach": true,
+    "chai": true,
     "confirm": true,
-    "prompt": true,
-    "require": true,
-    "requirejs": true,
-    "mocha": true,
-    "mochaPhantomJS": true,
+    "console": true,
+    "define": true,
     "describe": true,
     "it": true,
-    "beforeEach": true,
-    "afterEach": true
+    "jQuery": true,
+    "mocha": true,
+    "mochaPhantomJS": true,
+    "module": true,
+    "prompt": true,
+    "require": true,
+    "requirejs": true
   }
 }
