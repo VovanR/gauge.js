@@ -4,7 +4,7 @@
 [![Dependency Status][depstat-image]][depstat-url]
 [![DevDependency Status][depstat-dev-image]][depstat-dev-url]
 
-> Тестовое задание KudaGo [(Demo)](http://jsfiddle.net/VovanR/exnzzqx8/)
+> Тестовое задание KudaGo ([Demo](http://jsfiddle.net/VovanR/exnzzqx8/))
 
 ## Usage
 
