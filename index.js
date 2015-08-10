@@ -77,8 +77,6 @@
         _init: function () {
             console.info('Gauge init', this);
 
-            var _this = this;
-
             this._render();
         },
 
@@ -102,16 +100,19 @@
 
         /**
          * @param {Number} value
+         * @return {Number} degree
          * @private
          */
         _valueToDegree: function (value) {
+            // -120 deg - excluded part
+            // -210 deg - rotate start to simmetrical view
             return (value / this._maxValue * (360 - 120)) - 210;
         },
 
         /**
          * @param {Number} value
          * @param {Number} radius
-         * @return {Object}
+         * @return {Object} position
          * @private
          */
         _valueToPosition: function (value, radius) {
@@ -127,7 +128,7 @@
 
         /**
          * @param {Number} percent
-         * @return {Number}
+         * @return {Number} value
          * @private
          */
         _percentToValue: function (percent) {
@@ -164,7 +165,9 @@
         _renderTicks: function () {
             var ticksCache = '';
             var ticks = document.getElementById('ticks');
-            for (var value = 0; value <= this._labels.length - 1; value++) {
+
+            var total = this._labels.length - 1;
+            for (var value = 0; value <= total; value++) {
                 ticksCache += this._buildTick(value);
             }
 
@@ -185,7 +188,9 @@
         _renderTicksLabels: function () {
             var labelsCache = '';
             var labels = document.getElementById('labels');
-            for (var value = 0; value <= (this._labels.length - 1); value++) {
+
+            var total = this._labels.length - 1;
+            for (var value = 0; value <= total; value++) {
                 labelsCache += this._buildTickLabel(value);
             }
 
@@ -209,7 +214,9 @@
         _renderMarks: function () {
             var marksCache = '';
             var marks = document.getElementById('marks');
-            for (var value = 0; value <= ((this._labels.length - 1) * 10); value++) {
+
+            var total = (this._labels.length - 1) * 10;
+            for (var value = 0; value <= total; value++) {
                 // Skip marks on ticks
                 if (value % 10 === 0) {
                     continue;
