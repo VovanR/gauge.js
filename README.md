@@ -1,10 +1,29 @@
 # gauge.js
 
-> Тестовое задание KudaGo [(Demo)](http://jsfiddle.net/VovanR/exnzzqx8/)
-
 [![Build Status][travis-image]][travis-url]
 [![Dependency Status][depstat-image]][depstat-url]
 [![DevDependency Status][depstat-dev-image]][depstat-dev-url]
+
+> Тестовое задание KudaGo [(Demo)](http://jsfiddle.net/VovanR/exnzzqx8/)
+
+## Usage
+
+```javascript
+var foo = new Gauge({
+    block: document.getElementById('holder'),
+    actualValue: 4,
+    labels: [0, 1, 2, 3, 4, 5, 6],
+    warningValue: 75,
+    dangerValue: 90,
+});
+```
+
+![](example/specs.png)
+```javascript
+foo.setValue(2);
+foo.setValue(6);
+foo.setValue(0);
+```
 
 ## Development
 
