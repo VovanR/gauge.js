@@ -31,7 +31,7 @@
         this._warningValue = o.warningValue;
         this._dangerValue = o.dangerValue;
 
-        this._r = new window.Raphael(this._block, 600, 600);
+        this._r = new Raphael(this._block, 600, 600);
 
         this._init();
     };

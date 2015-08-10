@@ -10,6 +10,7 @@ describe('Gauge', function () {
         o = _.defaults(
             o || {},
             {
+                block: document.getElementById('holder'),
             }
         );
 
