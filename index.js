@@ -16,29 +16,29 @@
 
     'use strict';
 
-    var template = '<svg id="speedometr" version="1.1" width="100%" height="100%" ' +
+    var template = '<svg version="1.1" width="100%" height="100%" ' +
         'preserveAspectRatio="xMidYMid meet" viewBox="-50 -50 100 100">' +
         '<defs>' +
-            '<g id="mark">' +
-                '<line x1="0" y1="-30.5" x2="0" y2="-30.75" />' +
+            '<g id="gauge-mark" class="gauge-mark">' +
+                '<line x1="0" y1="-40.5" x2="0" y2="-40.75" />' +
             '</g>' +
 
-            '<g id="tick">' +
-                '<line x1="0" y1="-30.5" x2="0" y2="-31.5" />' +
+            '<g id="gauge-tick" class="gauge-tick">' +
+                '<line x1="0" y1="-40.5" x2="0" y2="-41.5" />' +
             '</g>' +
         '</defs>' +
 
-        '<g id="marks"></g>' +
-        '<g id="ticks"></g>' +
-        '<g id="labels"></g>' +
+        '<g class="gauge-marks"></g>' +
+        '<g class="gauge-ticks"></g>' +
+        '<g class="gauge-labels"></g>' +
 
-        '<g id="scale-arc"></g>' +
-        '<g id="scale-arc-warning"></g>' +
-        '<g id="scale-arc-danger"></g>' +
+        '<g class="gauge-scale-arc"></g>' +
+        '<g class="gauge-scale-arc-warning"></g>' +
+        '<g class="gauge-scale-arc-danger"></g>' +
 
-        '<g id="hand">' +
-            '<polygon points="-0.8,0 0,-31 0.8,0" />' +
-            '<circle cx="0" cy="0" r="1.5" />' +
+        '<g class="gauge-hand">' +
+            '<polygon points="-1,0 0,-41 1,0" />' +
+            '<circle cx="0" cy="0" r="2" />' +
         '</g>' +
     '</svg>';
 
@@ -139,7 +139,7 @@
          * @private
          */
         _renderHand: function () {
-            this._hand = document.getElementById('hand');
+            this._hand = $('.gauge-hand', this._block)[0];
             this._setValue(this._actualValue);
         },
 
@@ -164,7 +164,7 @@
          */
         _renderTicks: function () {
             var ticksCache = '';
-            var ticks = document.getElementById('ticks');
+            var ticks = $('.gauge-ticks', this._block)[0];
 
             var total = this._labels.length - 1;
             for (var value = 0; value <= total; value++) {
@@ -179,7 +179,7 @@
          * @private
          */
         _buildTick: function (value) {
-            return '<use xlink:href="#tick" transform="rotate(' + (this._valueToDegree(value) + 90) + ')" />';
+            return '<use xlink:href="#gauge-tick" transform="rotate(' + (this._valueToDegree(value) + 90) + ')" />';
         },
 
         /**
@@ -187,7 +187,7 @@
          */
         _renderTicksLabels: function () {
             var labelsCache = '';
-            var labels = document.getElementById('labels');
+            var labels = $('.gauge-labels', this._block)[0];
 
             var total = this._labels.length - 1;
             for (var value = 0; value <= total; value++) {
@@ -203,9 +203,10 @@
          * @private
          */
         _buildTickLabel: function (value) {
-            var position = this._valueToPosition(value, 33);
+            var position = this._valueToPosition(value, 43);
 
-            return '<text x="' + position.x + '" y="' + position.y + '" text-anchor="middle">' + value + '</text>';
+            return '<text x="' + position.x + '" y="' + position.y + '" text-anchor="middle">' +
+                this._labels[value] + '</text>';
         },
 
         /**
@@ -213,7 +214,7 @@
          */
         _renderMarks: function () {
             var marksCache = '';
-            var marks = document.getElementById('marks');
+            var marks = $('.gauge-marks', this._block)[0];
 
             var total = (this._labels.length - 1) * 10;
             for (var value = 0; value <= total; value++) {
@@ -232,7 +233,7 @@
          * @private
          */
         _buildMark: function (value) {
-            return '<use xlink:href="#mark" transform="rotate(' + (this._valueToDegree(value) + 90) + ')" />';
+            return '<use xlink:href="#gauge-mark" transform="rotate(' + (this._valueToDegree(value) + 90) + ')" />';
         },
 
         /**
@@ -249,8 +250,8 @@
                 max = this._warningValue;
             }
 
-            var group = document.getElementById('scale-arc');
-            var arc = this._buildArc(0, max, 29);
+            var group = $('.gauge-scale-arc', this._block)[0];
+            var arc = this._buildArc(0, max, 39);
 
             group.innerHTML = arc;
         },
@@ -265,8 +266,8 @@
                 max = this._dangerValue;
             }
 
-            var group = document.getElementById('scale-arc-warning');
-            var arc = this._buildArc(this._warningValue, max, 29);
+            var group = $('.gauge-scale-arc-warning', this._block)[0];
+            var arc = this._buildArc(this._warningValue, max, 39);
 
             group.innerHTML = arc;
         },
@@ -275,8 +276,8 @@
          * @private
          */
         _renderArcDanger: function () {
-            var group = document.getElementById('scale-arc-danger');
-            var arc = this._buildArc(this._dangerValue, 100, 29);
+            var group = $('.gauge-scale-arc-danger', this._block)[0];
+            var arc = this._buildArc(this._dangerValue, 100, 39);
 
             group.innerHTML = arc;
         },
