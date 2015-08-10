@@ -203,8 +203,6 @@
                 .attr({
                     stroke: '#666',
                     'stroke-width': 3,
-                })
-                .attr({
                     arc: [0, max],
                 });
         },
@@ -223,8 +221,6 @@
                 .attr({
                     stroke: '#ffa500',
                     'stroke-width': 3,
-                })
-                .attr({
                     arc: [this._warningValue, max],
                 });
         },
@@ -237,8 +233,6 @@
                 .attr({
                     stroke: '#ff0000',
                     'stroke-width': 3,
-                })
-                .attr({
                     arc: [this._dangerValue, 100],
                 });
         },
