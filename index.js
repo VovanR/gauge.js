@@ -167,7 +167,7 @@
          * @private
          */
         _renderMarks: function () {
-            this._drawMarks(100);
+            this._drawMarks((this._labels.length - 1) * 10);
         },
 
         /**
@@ -179,8 +179,13 @@
             var radius = 182;
 
             for (var value = 0; value < total; value++) {
+                // Skip marks on ticks
+                if (value % 10 === 0) {
+                    continue;
+                }
+
                 var position = this._getPosition(total, value, radius);
-                out.push(this._r.circle(position.x, position.y, 1).attr({
+                out.push(this._r.circle(position.x, position.y, 0.5).attr({
                     fill: '#666',
                     stroke: 'none',
                 }));
