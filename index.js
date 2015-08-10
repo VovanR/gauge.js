@@ -21,6 +21,7 @@
     /**
      * @param {Object} o Options
      * @param {HTMLElement} o.block
+     * @param {Array} o.labels
      * @param {Number} [o.warningValue] in percents
      * @param {Number} [o.dangerValue] in percentes
      * @constructor
@@ -28,6 +29,7 @@
      */
     Gauge = function (o) {
         this._block = o.block;
+        this._labels = o.labels;
         this._warningValue = o.warningValue;
         this._dangerValue = o.dangerValue;
 
@@ -114,7 +116,7 @@
          * @private
          */
         _renderTicks: function () {
-            this._drawTicks(6);
+            this._drawTicks(this._labels.length);
         },
 
         /**
@@ -124,6 +126,7 @@
         _drawTicks: function (total) {
             var out = this._r.set();
             var radius = 182;
+            total -= 1;
 
             for (var value = 0; value <= total; value++) {
                 var positionStart = this._getPosition(total, value, radius);
@@ -146,12 +149,13 @@
         _renderTicksLabels: function () {
             var out = this._r.set();
             var radius = 200;
-            var total = 6;
+            var labels = this._labels;
+            var total = labels.length - 1;
 
             for (var value = 0; value <= total; value++) {
                 var position = this._getPosition(total, value, radius);
 
-                out.push(this._r.text(position.x, position.y, String(value)).attr({
+                out.push(this._r.text(position.x, position.y, String(labels[value])).attr({
                     'font-size': '14px',
                     fill: '#666',
                     'text-anchor': 'middle',
