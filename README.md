@@ -1,6 +1,6 @@
 # gauge.js
 
-> Тестовое задание KudaGo
+> Тестовое задание KudaGo [(Demo)](http://jsfiddle.net/VovanR/exnzzqx8/)
 
 [![Build Status][travis-image]][travis-url]
 [![Dependency Status][depstat-image]][depstat-url]
