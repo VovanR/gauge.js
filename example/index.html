@@ -21,7 +21,46 @@ html,
 body {
   margin: 0;
   height: 100%;
-    /* background: url(specs.png) 50% 50% no-repeat; */
+}
+
+.dev {
+  background: url(specs.png) 50% 50% no-repeat;
+}
+
+#hand {
+  fill: #1E98E4;
+}
+
+#labels {
+    font-size: 2.5px;
+    font-family: monospace;
+    fill: #666;
+    text-anchor: middle;
+}
+
+#mark {
+    stroke: #666;
+    stroke-width: 0.1;
+}
+
+#tick {
+    stroke: #666;
+    stroke-width: 0.25;
+}
+
+#scale-arc {
+    stroke: #666;
+    stroke-width: 0.5;
+}
+
+#scale-arc-warning {
+    stroke: #ffa500;
+    stroke-width: 0.5;
+}
+
+#scale-arc-danger {
+    stroke: #ff0000;
+    stroke-width: 0.5;
 }
 </style>
 
@@ -30,14 +69,27 @@ body {
 
 <div id="holder"></div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.4/raphael-min.js"></script>
+<button id="toggle-pixelperfect" type="button">Pixel Perfect</button>
+
+<script>
+    var body = document.getElementsByTagName('body')[0];
+    document.getElementById('toggle-pixelperfect').addEventListener('click', function () {
+        if (body.classList.contains('dev')) {
+            body.classList.remove('dev');
+        } else {
+            body.classList.add('dev');
+        }
+    });
+</script>
+
 <script src="../index.js"></script>
 
 <script>
 (function () {
 
-    var lol = new Gauge({
+    var foo = new Gauge({
         block: document.getElementById('holder'),
+        actualValue: 4,
         labels: [0, 1, 2, 3, 4, 5, 6],
         warningValue: 75,
         dangerValue: 90,
