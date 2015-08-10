@@ -21,12 +21,15 @@
     /**
      * @param {Object} o Options
      * @param {HTMLElement} o.block
+     * @param {Number} [o.warningValue] in percents
+     * @param {Number} [o.dangerValue] in percentes
      * @constructor
      * @module Gauge
      */
     Gauge = function (o) {
         this._block = o.block;
-        this._values = o.values;
+        this._warningValue = o.warningValue;
+        this._dangerValue = o.dangerValue;
 
         this._r = new window.Raphael(this._block, 600, 600);
 
@@ -56,7 +59,7 @@
                 var alpha = (360 - 120) / total * (max - min);
                 var path = [
                     ['M', positionStart.x, positionStart.y],
-                    ['A', radius, radius, 0, Boolean(alpha > 180), 1, positionEnd.x, positionEnd.y]
+                    ['A', radius, radius, 0, (alpha > 180) ? 1 : 0, 1, positionEnd.x, positionEnd.y]
                 ];
 
                 return {
@@ -76,8 +79,12 @@
             this._renderTicks();
             this._renderTicksLabels();
             this._renderArcScale();
-            this._renderArcMiddle();
-            this._renderArcHigh();
+            if (this._warningValue !== undefined) {
+                this._renderArcWarning();
+            }
+            if (this._dangerValue !== undefined) {
+                this._renderArcDanger();
+            }
         },
 
         /**
@@ -143,7 +150,6 @@
 
             for (var value = 0; value <= total; value++) {
                 var position = this._getPosition(total, value, radius);
-                console.log(position);
 
                 out.push(this._r.text(position.x, position.y, String(value)).attr({
                     'font-size': '14px',
@@ -183,41 +189,57 @@
          * @private
          */
         _renderArcScale: function () {
+            var max = 100;
+
+            if (this._dangerValue) {
+                max = this._dangerValue;
+            }
+
+            if (this._warningValue) {
+                max = this._warningValue;
+            }
+
             var scaleArc = this._r.path()
                 .attr({
                     stroke: '#666',
                     'stroke-width': 3,
                 })
                 .attr({
-                    arc: [0, 75],
+                    arc: [0, max],
                 });
         },
 
         /**
          * @private
          */
-        _renderArcMiddle: function () {
+        _renderArcWarning: function () {
+            var max = 100;
+
+            if (this._dangerValue) {
+                max = this._dangerValue;
+            }
+
             var scaleArc = this._r.path()
                 .attr({
                     stroke: '#ffa500',
                     'stroke-width': 3,
                 })
                 .attr({
-                    arc: [75, 90],
+                    arc: [this._warningValue, max],
                 });
         },
 
         /**
          * @private
          */
-        _renderArcHigh: function () {
+        _renderArcDanger: function () {
             var scaleArc = this._r.path()
                 .attr({
                     stroke: '#ff0000',
                     'stroke-width': 3,
                 })
                 .attr({
-                    arc: [90, 100],
+                    arc: [this._dangerValue, 100],
                 });
         },
 
