@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>gauge.js</title>
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+#holder {
+  height: 600px;
+  left: 50%;
+  margin: -300px 0 0 -300px;
+  position: absolute;
+  top: 50%;
+  width: 600px;
+    padding-top: 55px;
+}
+
+html,
+body {
+  margin: 0;
+  height: 100%;
+    /* background: url(specs.png) 50% 50% no-repeat; */
+}
+</style>
+
+    </head>
+    <body>
+
+<div id="holder"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.4/raphael-min.js"></script>
+<script src="../index.js"></script>
+
+<script>
+(function () {
+
+    var lol = new Gauge({
+        block: document.getElementById('holder'),
+    });
+
+})();
+</script>
+
+    </body>
+</html>
