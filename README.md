@@ -1,5 +1,6 @@
 # gauge.js
 
+[![NPM version][npm-image]][npm-url]
 [![Build Status][travis-image]][travis-url]
 [![Dependency Status][depstat-image]][depstat-url]
 [![DevDependency Status][depstat-dev-image]][depstat-dev-url]
@@ -58,6 +59,9 @@ npm run lint
 
 ## License
 MIT © [Vladimir Rodkin](https://github.com/VovanR)
+
+[npm-url]: https://npmjs.org/package/gauge.js
+[npm-image]: http://img.shields.io/npm/v/gauge.js.svg
 
 [travis-url]: https://travis-ci.org/VovanR/gauge.js
 [travis-image]: http://img.shields.io/travis/VovanR/gauge.js.svg
