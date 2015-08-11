@@ -8,6 +8,13 @@
     "url": "https://github.com/VovanR/gauge.js"
   },
   "main": "./dist/gauge.js",
+  "files": [
+    "dist",
+    "src",
+    "LICENSE",
+    "README.md",
+    "package.json"
+  ],
   "scripts": {
     "prepush": "npm test; npm run lint",
     "precommit": "npm test; npm run lint",
