@@ -7,17 +7,23 @@
     "type": "git",
     "url": "https://github.com/VovanR/gauge.js"
   },
-  "main": "./index.js",
+  "main": "./dist/gauge.js",
   "scripts": {
     "prepush": "npm test; npm run lint",
     "precommit": "npm test; npm run lint",
     "test": "mocha-phantomjs -R spec ./test/index-test.html",
     "lint": "npm run jslint; npm run jscs",
-    "jslint": "jshint --reporter ./node_modules/jshint-stylish ./index.js ./test/*.js",
-    "jscs": "jscs ./index.js ./test/*.js"
+    "jslint": "jshint --reporter ./node_modules/jshint-stylish ./src/index.js ./test/*.js",
+    "jscs": "jscs ./src/index.js ./test/*.js",
+    "uglify": "uglifyjs ./src/index.js -o ./dist/gauge.min.js",
+    "clean": "rm -rf ./dist && mkdir ./dist",
+    "build:css": "csso ./src/style.css ./dist/gauge.min.css && cp ./src/style.css ./dist/gauge.css",
+    "build:js": "npm run lint && npm run uglify && cp ./src/index.js ./dist/gauge.js",
+    "build": "npm run clean && npm run build:css && npm run build:js"
   },
   "devDependencies": {
     "chai": "^3.0.0",
+    "csso": "^1.3.11",
     "husky": "^0.8.1",
     "jquery": "^2.1.4",
     "jscs": "^1.13.1",
@@ -27,7 +33,8 @@
     "lodash": "^3.9.3",
     "mocha": "^2.2.5",
     "mocha-phantomjs": "^3.5.3",
-    "sinon": "^1.14.1"
+    "sinon": "^1.14.1",
+    "uglifyjs": "^2.4.10"
   },
   "bugs": {
     "url": "https://github.com/VovanR/gauge.js/issues"
