@@ -65,21 +65,10 @@
 
         this._delta = 100 / this._maxValue;
 
-        this._init();
+        this._render();
     };
 
     Gauge.prototype = {
-        /**
-         * Initialize
-         *
-         * @private
-         */
-        _init: function () {
-            console.info('Gauge init', this);
-
-            this._render();
-        },
-
         /**
          * @private
          */

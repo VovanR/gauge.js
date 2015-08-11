@@ -42,10 +42,6 @@ describe('Gauge', function () {
     });
 
     describe('#destroy', function () {
-        it('should be a `Function`', function () {
-            var m = module();
-            assert.isFunction(m.destroy);
-        });
     });
 });
 
