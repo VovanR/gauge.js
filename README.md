@@ -6,6 +6,15 @@
 
 > Тестовое задание KudaGo ([Demo](http://jsfiddle.net/VovanR/exnzzqx8/))
 
+![](example/specs.png)
+
+## Install
+
+```sh
+npm i -D gauge.js
+bower i -D 'VovanR/gauge.js'
+```
+
 ## Usage
 
 ```javascript
@@ -18,7 +27,6 @@ var foo = new Gauge({
 });
 ```
 
-![](example/specs.png)
 ```javascript
 foo.setValue(2);
 foo.setValue(6);
