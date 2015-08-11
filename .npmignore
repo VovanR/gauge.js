@@ -1,0 +1,10 @@
+node_modules
+coverage
+example
+test
+.gitignore
+.editorconfig
+.jscsrc
+.jshintrc
+.travis.yml
+npm-debug.log
