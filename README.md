@@ -2,10 +2,11 @@
 
 [![NPM version][npm-image]][npm-url]
 [![Build Status][travis-image]][travis-url]
+[![Coveralls Status][coveralls-image]][coveralls-url]
 [![Dependency Status][depstat-image]][depstat-url]
 [![DevDependency Status][depstat-dev-image]][depstat-dev-url]
 
-> Тестовое задание KudaGo ([Demo](http://jsfiddle.net/VovanR/exnzzqx8/))
+> Simple JS SVG Gauge ([Demo](http://jsfiddle.net/VovanR/exnzzqx8/))
 
 ![](example/specs.png)
 
@@ -65,6 +66,9 @@ MIT © [Vladimir Rodkin](https://github.com/VovanR)
 
 [travis-url]: https://travis-ci.org/VovanR/gauge.js
 [travis-image]: http://img.shields.io/travis/VovanR/gauge.js.svg
+
+[coveralls-url]: https://coveralls.io/r/VovanR/gauge.js
+[coveralls-image]: http://img.shields.io/coveralls/VovanR/gauge.js.svg
 
 [depstat-url]: https://david-dm.org/VovanR/gauge.js
 [depstat-image]: https://david-dm.org/VovanR/gauge.js.svg

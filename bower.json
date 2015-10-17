@@ -1,8 +1,12 @@
 {
   "name": "gauge.js",
+  "description": "Simple JS SVG Gauge",
   "version": "0.2.1",
-  "description": "Тестовое задание KudaGo",
   "author": "Vladimir Rodkin <mail@vovanr.com>",
+  "keywords": [
+    "gauge",
+    "speedometer"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/VovanR/gauge.js"
@@ -12,9 +16,13 @@
   ],
   "ignore": [
     "example",
+    "bower_components",
+    "node_modules",
+    "**/.*",
     "test",
     "src",
-    "**/.*"
+    "LICENSE",
+    "README.md"
   ],
   "dependencies": {
     "jquery": "^2.1.4"
@@ -24,5 +32,9 @@
   },
   "homepage": "https://github.com/VovanR/gauge.js",
   "license": "MIT",
+  "moduleType": [
+    "globals",
+    "amd"
+  ],
   "private": false
 }
