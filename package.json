@@ -45,7 +45,6 @@
     "csso": "^1.4.0",
     "husky": "^0.10.1",
     "istanbul": "^0.3.11",
-    "jquery": "^2.1.4",
     "lodash": "^3.10.1",
     "mocha": "^2.3.3",
     "mocha-lcov-reporter": "0.0.2",
@@ -60,5 +59,7 @@
   },
   "homepage": "https://github.com/VovanR/gauge.js",
   "license": "MIT",
-  "dependencies": {}
+  "dependencies": {
+    "jquery": "^2.1.4"
+  }
 }
